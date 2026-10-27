@@ -94,3 +94,32 @@ OR
 
 **Use the C/C++ Extension on VS code Editor.**
 ---
+## Practical-04
+
+### QUESTION
+
+Replace suitable raw new/delete usage with std::unique_ptr and std::shared_ptr. Compare behaviour and check for memory leaks.
+
+### THEORY
+
+RAII (Resource Acquisition Is Initialization) is a C++ programming technique in which resources are automatically acquired and released according to an object's lifetime. Smart pointers help manage dynamically allocated memory and reduce the need for manual memory management.
+
+* std::unique_ptr: Manages an object with exclusive ownership. Only one unique_ptr can own the object at a time. The object is automatically destroyed when the pointer goes out of scope.
+* std::shared_ptr: Allows multiple pointers to share ownership of the same object. The object is automatically destroyed when the last owning shared_ptr is released.
+* RAII: Ensures that resources are released automatically when their owning objects are destroyed.
+* Memory Leak: Occurs when dynamically allocated memory is not properly released and becomes inaccessible to the program.
+* Valgrind/AddressSanitizer: Tools used to detect memory leaks and other memory-management errors.
+
+### COMPILE/RUN INSTRUCTION
+**Step 1:** **Save the Program**
+
+**Step 2:** **Compile the Program:** `g++ -std=c++14 Practical-04.cpp -o SmartPointers`
+
+**Step 3:** **Execute the Program:** `Windows: SmartPointers.exe`
+
+**Step 4:** **Check for Memory Leaks:** `Using Valgrind: valgrind --leak-check=full ./SmartPointers`
+
+OR
+
+**Use the C/C++ Extension in VS Code Editor.**
+---
