@@ -288,3 +288,34 @@ OR
 **Use the C/C++ Extension in VS Code Editor.**
 
 ---
+## Practical-10
+
+### QUESTION
+
+Create a custom exception hierarchy and throw/catch specific exceptions in a banking transaction program.
+
+### THEORY
+
+Exception handling is a mechanism in C++ used to detect and handle runtime errors without abruptly terminating the program. It uses try, throw, and catch to manage exceptional situations.
+
+* Custom Exceptions: User-defined exception classes that represent specific application errors, such as insufficient funds or invalid transaction amounts.
+* std::exception: A standard base class for exceptions in C++. Custom exception classes can inherit from it and override the what() function to provide an error message.
+* throw: Used to signal an exception when an error condition occurs.
+* try: Contains code that may generate an exception.
+* catch: Handles an exception thrown from a corresponding try block.
+* InvalidAmount: A custom exception thrown when a withdrawal or transaction amount is zero or negative.
+* InsufficientFunds: A custom exception thrown when the requested withdrawal exceeds the available account balance.
+
+### COMPILE/RUN INSTRUCTION
+
+**Step 1: Save the Program**
+
+**Step 2: Compile the Program:** `g++ Practical-10.cpp -o Banking`
+
+**Step 3: Execute the Program:** `Banking.exe`
+
+OR
+
+**Use the C/C++ Extension in VS Code Editor.**
+
+---
