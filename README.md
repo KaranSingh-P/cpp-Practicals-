@@ -183,3 +183,32 @@ OR
 **Use the C/C++ Extension in VS Code Editor.**
 
 ---
+## Practical-07
+
+### QUESTION
+
+Demonstrate function overloading and operator overloading using a Complex Number or Matrix class.
+
+### THEORY
+
+Compile-time polymorphism is an object-oriented programming feature in C++ that allows the same function name or operator to perform different operations depending on the arguments or operand types.
+
+* Function Overloading: Allows multiple functions to have the same name but different parameter lists, such as add(int, int) and add(double, double). The compiler selects the appropriate function based on the arguments.
+* Operator Overloading: Allows existing operators, such as +, to work with user-defined objects by defining their behaviour within a class.
+* Complex Number Class: Represents a complex number using real and imaginary parts. Two complex numbers can be added by adding their real parts and imaginary parts separately.
+* Compile-Time Polymorphism: The compiler determines which overloaded function or operator to use during compilation.
+Runtime Polymorphism: The appropriate overridden virtual function is selected at runtime based on the actual derived object.
+
+### COMPILE/RUN INSTRUCTION
+
+**Step 1: Save the Program**
+
+**Step 2: Compile the Program:** `g++ Practical-07.cpp -o Overloading`
+
+**Step 3: Execute the Program:** `Overloading.exe`
+
+OR
+
+**Use the C/C++ Extension in VS Code Editor.**
+
+---
