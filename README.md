@@ -155,3 +155,31 @@ OR
 **Use the C/C++ Extension in VS Code Editor.**
 
 ---
+## Practical-06
+
+### QUESTION
+
+Create an abstract Shape class and implement Circle, Rectangle and Triangle with an area() function.
+
+### THEORY
+
+Polymorphism is an object-oriented programming feature in C++ that allows the same interface to perform different operations depending on the object involved.
+
+* Abstract Class: A class that contains at least one pure virtual function. Objects of an abstract class cannot be instantiated directly.
+* Virtual Function: A member function declared using the virtual keyword that allows the appropriate derived-class function to be called at runtime.
+* Pure Virtual Function: A virtual function declared with = 0 that must be implemented by concrete derived classes to make them instantiable.
+* Runtime Polymorphism: Allows a function call through a base-class pointer or reference to execute the overridden function of the actual derived object.
+* Virtual Destructor: Ensures that the derived-class destructor is called correctly when an object is deleted through a base-class pointer.
+
+### COMPILE/RUN INSTRUCTION
+**Step 1: Save the Program**
+
+**Step 2: Compile the Program:** `g++ Practical-06.cpp -o Polymorphism`
+
+**Step 3: Execute the Program:** `Polymorphism.exe`
+
+OR
+
+**Use the C/C++ Extension in VS Code Editor.**
+
+---
