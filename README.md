@@ -53,3 +53,44 @@ OR
 **Use the C/C++ Extension on VS code Editor.**
 
 ---
+## Practical-03
+
+### QUESTION
+
+Implement a class that demonstrates default, parameterized, copy, and move constructors, and the Rule of Five.
+
+### THEORY
+
+Constructors are special member functions used to initialise objects in C++. Different types of constructors allow objects to be created and initialised in different ways.
+
+* Default Constructor: Initialises an object without any arguments.
+* Parameterized Constructor: Initialises an object using arguments passed during creation.
+* Copy Constructor: Creates a new object by copying an existing object.
+* Move Constructor: Transfers resources from one object to another without copying the resource.
+* Copy Assignment Operator: Copies the contents of one existing object into another.
+* Move Assignment Operator: Transfers resources from one existing object to another.
+* Destructor: Releases allocated resources when an object is destroyed.
+
+### RULE OF FIVE
+The Rule of Five states that a class managing resources manually may need to define the following five special member functions:
+
+* Destructor
+* Copy constructor
+* Copy assignment operator
+* Move constructor
+* Move assignment operator
+
+These functions help manage resources safely, prevent memory leaks, and avoid issues such as double deletion.
+
+### Compile/Run instruction
+
+**Step 1:** **Save the Program**
+
+**Step 2:** **Compile the Program:** `g++ Practical-03.cpp -o RuleFive`
+
+**Step 3:** **Execute the Program:** `RuleFive.exe`
+
+OR
+
+**Use the C/C++ Extension on VS code Editor.**
+---
