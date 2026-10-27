@@ -93,6 +93,7 @@ These functions help manage resources safely, prevent memory leaks, and avoid is
 OR
 
 **Use the C/C++ Extension on VS code Editor.**
+
 ---
 ## Practical-04
 
@@ -115,11 +116,42 @@ RAII (Resource Acquisition Is Initialization) is a C++ programming technique in 
 
 **Step 2:** **Compile the Program:** `g++ -std=c++14 Practical-04.cpp -o SmartPointers`
 
-**Step 3:** **Execute the Program:** `Windows: SmartPointers.exe`
+**Step 3:** **Execute the Program:** `SmartPointers.exe`
 
-**Step 4:** **Check for Memory Leaks:** `Using Valgrind: valgrind --leak-check=full ./SmartPointers`
+**Step 4:** **Check for Memory Leaks:** Using Valgrind: `valgrind --leak-check=full ./SmartPointers`
 
 OR
 
 **Use the C/C++ Extension in VS Code Editor.**
+
+---
+## Practical-05
+
+### QUESTION
+
+Implement a university-management example using inheritance: Person → Student → GraduateStudent.
+
+### THEORY
+
+Inheritance is an object-oriented programming feature in C++ that allows a class to acquire the data members and member functions of another class. It promotes code reusability and helps establish relationships between classes.
+
+* Base Class: A class whose members are inherited by another class. In this practical, Person is the base class.
+* Derived Class: A class that inherits members from another class. Student inherits from Person, and GraduateStudent inherits from Student.
+* Single Inheritance: Occurs when one derived class inherits from one base class, as in Person → Student.
+* Multilevel Inheritance: Occurs when a class inherits from a derived class, forming a chain such as Person → Student → GraduateStudent.
+* Constructors: Special member functions used to initialise objects when they are created.
+* Display Functions: Member functions used to display the information stored in each class.
+
+### COMPILE/RUN INSTRUCTION
+
+**Step 1: Save the Program**
+
+**Step 2: Compile the Program:** `g++ Practical-05.cpp -o Inheritance`
+
+**Step 3: Execute the Program:** `Inheritance.exe`
+
+OR
+
+**Use the C/C++ Extension in VS Code Editor.**
+
 ---
