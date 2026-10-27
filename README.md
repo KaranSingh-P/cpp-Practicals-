@@ -212,3 +212,41 @@ OR
 **Use the C/C++ Extension in VS Code Editor.**
 
 ---
+## Practical-08
+
+### QUESTION
+
+Implement either the Singleton or Factory design pattern in C++ and discuss its use case and trade-offs.
+
+### THEORY
+
+Design patterns are reusable solutions to common software design problems. They help organise code, improve maintainability, and provide a structured approach to object creation.
+
+* Factory Design Pattern: A creational design pattern that provides a method for creating objects without requiring the calling code to construct the concrete classes directly.
+* Abstract Base Class: A class that defines a common interface for derived classes. In this practical, the weapons class provides the attack() function.
+* Derived Classes: The sword and hammer classes inherit from weapons and implement their own versions of the attack() function.
+* Factory Class: The weaponFactory class creates and returns the appropriate weapon object based on the requested weapon type.
+* Smart Pointers: The std::unique_ptr smart pointer manages the created objects automatically and releases their memory when they go out of scope.
+
+### FACTORY DESIGN PATTERN
+
+The Factory pattern is suitable for this example because the program needs to create different types of weapons based on the user's requested type.
+
+* Weapons: An abstract base class that defines the common attack() interface.
+* Sword: A derived class that implements the sword attack.
+* Hammer: A derived class that implements the hammer attack.
+* WeaponFactory: Creates and returns a Sword or Hammer object using the chooseWeapon() function.
+
+### COMPILE/RUN INSTRUCTION
+
+**Step 1: Save the Program**
+
+**Step 2: Compile the Program:** `g++ -std=c++14 Practical-08.cpp -o FactoryPattern`
+
+**Step 3: Execute the Program:** `FactoryPattern.exe`
+
+OR
+
+**Use the C/C++ Extension in VS Code Editor.**
+
+---
