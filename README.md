@@ -319,3 +319,35 @@ OR
 **Use the C/C++ Extension in VS Code Editor.**
 
 ---
+## Practical-11
+
+### QUESTION
+
+Implement a CSV reader/writer using fstream to store and retrieve student records. Demonstrate seekg(), seekp(), tellg() and tellp().
+
+### THEORY
+
+File handling in C++ allows data to be stored permanently in files and retrieved when required. The <fstream> library provides classes and functions to perform file input and output operations.
+
+* fstream: A file stream class that supports both reading and writing operations.
+* CSV (Comma-Separated Values): A simple text-based format in which fields are separated by commas. In this practical, student records contain an ID, name and marks.
+* seekg(): Moves the input (get) position to a specified location in a file.
+* seekp(): Moves the output (put) position to a specified location in a file.
+* tellg(): Returns the current input position in the file.
+* tellp(): Returns the current output position in the file.
+* File Modes: Specify how a file is opened, such as ios::in for reading, ios::out for writing and ios::app for appending.
+* Error Handling: Checks whether a file opened successfully and whether reading or writing operations completed correctly.
+
+### COMPILE/RUN INSTRUCTION
+
+**Step 1: Save the Program**
+
+**Step 2: Compile the Program:** `g++ Practical-11.cpp -o CSVFileHandling`
+
+**Step 3: Execute the Program:** `CSVFileHandling.exe`
+
+OR
+
+**Use the C/C++ Extension in VS Code Editor.**
+
+---
