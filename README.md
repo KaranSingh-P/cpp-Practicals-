@@ -250,3 +250,41 @@ OR
 **Use the C/C++ Extension in VS Code Editor.**
 
 ---
+## Practical-09
+
+### QUESTION
+
+Write a generic Stack or Queue class using templates and test it with int, float and std::string values.
+
+### THEORY
+
+Templates are a feature of C++ that allows functions and classes to work with different data types without writing separate implementations for each type. They promote code reusability and reduce code duplication.
+
+* Class Template: Allows a class to operate on different data types by using a template parameter, such as template <typename T>.
+* Stack: A linear data structure that follows the Last In, First Out (LIFO) principle, meaning the last inserted element is removed first.
+* Push Operation: Adds an element to the top of the stack.
+* Pop Operation: Removes the top element from the stack.
+* Top Operation: Accesses the top element without removing it.
+* Empty Check: Determines whether the stack contains any elements.
+* Exception Handling: Helps manage invalid operations, such as attempting to remove or access an element from an empty stack.
+
+### TEST CASES
+
+* Normal Operation: Push elements into the stack and display or remove the top element.
+* Multiple Data Types: Test the stack using int, float and std::string values.
+* Empty Stack: Check the behaviour when attempting to access or remove an element from an empty stack.
+* Empty Check: Verify that empty() returns the correct result after all elements have been removed.
+
+### COMPILE/RUN INSTRUCTION
+
+**Step 1: Save the Program**
+
+**Step 2: Compile the Program:** `g++ -std=c++11 Practical-09.cpp -o GenericStack`
+
+**Step 3: Execute the Program:** `GenericStack.exe`
+
+OR
+
+**Use the C/C++ Extension in VS Code Editor.**
+
+---
