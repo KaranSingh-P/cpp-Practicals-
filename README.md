@@ -357,7 +357,20 @@ OR
 
 Build a console-based Library Management System using C++. Apply OOP concepts, STL containers, exception handling and file handling to add, edit, search and list book records. Store and retrieve library records using a CSV file.
 
-### THEORY
+### Features
+
+* Add Books: Add new book records with a unique ID, title, author, and availability.
+* Edit Books: Modify existing book details and update records.
+* Search Books: Search for books by ID, title, or author.
+* List Books: Display stored book records.
+* Input Validation: Validate book IDs and availability values to prevent invalid entries.
+* Exception Handling: Handle invalid console input using a custom exception class.
+* File Handling: Read and write book records using Library.csv.
+* Data Persistence: Load existing records at startup and save updated records on exit.
+* STL Containers: Use map to store book records and vector to temporarily store matching book IDs during searches.
+* Function Overloading: Provide overloaded Add() functions to add books with or without specifying initial availability.
+
+### Concepts Used
 
 Object-Oriented Programming (OOP) in C++ allows programs to be organized using classes and objects. In this practical, a Library Management System is implemented to manage book records and their availability.
 
