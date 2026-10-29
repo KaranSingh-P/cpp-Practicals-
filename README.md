@@ -351,3 +351,40 @@ OR
 **Use the C/C++ Extension in VS Code Editor.**
 
 ---
+## Practical-12
+
+### QUESTION
+
+Build a console-based Library Management System using C++. Apply OOP concepts, STL containers, exception handling and file handling to add, edit, search and list book records. Store and retrieve library records using a CSV file.
+
+### THEORY
+
+Object-Oriented Programming (OOP) in C++ allows programs to be organized using classes and objects. In this practical, a Library Management System is implemented to manage book records and their availability.
+
+* Class: A user-defined data type that combines data and functions. The Library class manages book records and library operations.
+* Structure (struct): The Book structure stores the title, author and availability of a book.
+* Encapsulation: The Library class keeps its book records and helper functions private while providing public functions to perform library operations.
+* Function Overloading: The Add() function is overloaded to add books with or without specifying the initial availability.
+* STL (map): The map<int, Book> container stores book records indexed by their unique IDs.
+* STL (vector): The vector<int> container temporarily stores matching book IDs during searches.
+* Exception Handling: A custom InvalidInput class inherits from exception and is used to handle invalid console input through try, throw and catch.
+* File Handling (fstream): The <fstream> library is used to read and write book records in Library.csv.
+* CSV (Comma-Separated Values): A text-based format used to store book ID, title, author and availability as comma-separated fields.
+* Input Validation: Book IDs must be non-negative, and book availability must be between 0 and 999. Invalid operations are handled with appropriate messages.
+* Searching and Editing: Books can be searched by ID, author or title, and existing records can be edited or updated.
+* Data Persistence: Existing records are loaded when the application starts, and updated records are saved to the CSV file when the user exits.
+
+### COMPILE/RUN INSTRUCTION
+**Step 1: Save the Program**
+
+Save the source code as Practical-12.cpp and create an empty Library.csv file in the program's working directory if one does not already exist.
+
+**Step 2: Compile the Program:** `g++ Practical-12.cpp -o LibraryManagement`
+
+**Step 3: Execute the Program:** `LibraryManagement.exe`
+
+OR
+
+**Use the C/C++ Extension in VS Code Editor.**
+
+Note: The program expects Library.csv to exist before execution. Book records are saved when option 8 (Exit) is selected.
