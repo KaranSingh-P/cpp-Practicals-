@@ -21,7 +21,7 @@ struct Book {
 
 class Library {
     map<int, Book> BookRecord;
-    // Write logic to read data from outside file and save in Book record
+
     string getBook(int id) {
         return "Book Id: " + to_string(id) + "\nBook Title: " + BookRecord[id].title + "\nBook Author: " + BookRecord[id].author + "\nBook Availability: " + to_string(BookRecord[id].availability);
     }
@@ -50,16 +50,47 @@ class Library {
         return false;
     }
 public:
+    Library() {
+        fstream file("Library.csv", ios::in | ios::out);
+
+        if (!file.is_open()) {
+            cout << "Unable to open the Library file.\n";
+            exit(-1);
+        }
+
+        string line;
+
+        while (getline(file, line)) {
+            size_t start = 0, pos;
+            vector<int> elements;
+            while ((pos = line.find(",", start)) != string::npos) {
+                elements.push_back(pos);
+                start = pos + 1;
+            }
+            if (elements.size() != 3) {
+                continue;
+            }
+            BookRecord[stoi(line.substr(0, elements[0]))] =
+            { line.substr(elements[0] + 1,(elements[1] - elements[0] - 1)),
+             line.substr(elements[1] + 1,(elements[2] - elements[1] - 1)),
+             stoi(line.substr(elements[2] + 1)) };
+        }
+
+        file.close();
+    }
+
     void Add(int id, string title, string author, int availability) {
         if (id < 0 || availability < 0 || availability > 999) {
             cout << "Invalid ID/Availability Entry.\n";
             return;
         }
+
         if (BookRecord.find(id) == BookRecord.end()) {
             BookRecord[id] = { title, author, availability };
             cout << "Book successfully added.\n" << getBook(id) << "\n";
             return;
         }
+
         if (confirmOverwrite()) {
             BookRecord[id] = { title, author, availability };
             cout << "Book successfully added.\n" << getBook(id) << "\n";
@@ -83,6 +114,8 @@ public:
             return;
         }
         BookRecord[id].availability = availability;
+
+
         cout << "Book availability updated.\n";
         cout << "Book: " << getBook(id) << "\n";
     }
@@ -121,9 +154,8 @@ public:
                     changed = true;
                 }
                 else {
-                    cout << "Invalid availability. Enter it again. ";
                     while (true) {
-                        cout << "Enter the availability of Book: ";
+                        cout << "Invalid. Enter the availability of Book: ";
                         if (!(cin >> availability)) {
                             throw InvalidInput();
                         }
@@ -219,7 +251,7 @@ public:
         }
     }
 
-    void ListBooks() {
+    void list_books() {
         if (BookRecord.empty()) {
             cout << "The Library record is empty.\n";
         }
@@ -233,6 +265,24 @@ public:
             }
         }
     }
+
+    void Exit() {
+        fstream file("Library.csv", ios::trunc);
+        if (!file.is_open()) {
+            cout << "Unable to open the file.\n";
+            return;
+        }
+        string line;
+        for (const auto& p : BookRecord) {
+            file << to_string(p.first) + "," + p.second.title + "," + p.second.author + "," + to_string(p.second.availability) + "\n";
+        }
+
+        if (!file) {
+            cerr << "Error occurred while saving the library.\n";
+        }
+
+        file.close();
+    }
 };
 
 int main() {
@@ -243,7 +293,7 @@ int main() {
     while (run) {
         cout << "\nYou are in the Library: \n"
             << "[1] Add Book \n"
-            << "[2] Increase Book amount \n"
+            << "[2] Change Book amount \n"
             << "[3] Edit Book details \n"
             << "[4] Search Book(s) by ID \n"
             << "[5] Search Book(s) by Author \n"
@@ -252,6 +302,7 @@ int main() {
             << "[8] Exit\n"
             << "\nChoice: ";
         if (!(cin >> choice)) {
+            cout << "Invalid input. Try again.\n";
             cin.clear();
             cin.ignore(100, '\n');
             continue;
@@ -370,13 +421,14 @@ int main() {
             }
             break;
         case '7':
-            L1.ListBooks();
+            L1.list_books();
             break;
         case '8':
             run = false;
+            L1.Exit();
             break;
         default:
-            cout << "Invalid entry. Enter a number between [1-6].\n";
+            cout << "Invalid entry. Enter a number between [1-8].\n";
         }
     }
 
