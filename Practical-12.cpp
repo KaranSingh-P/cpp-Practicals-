@@ -51,11 +51,11 @@ class Library {
     }
 public:
     Library() {
-        fstream file("Library.csv", ios::in | ios::out);
+        fstream file("Library.csv", ios::in);
 
         if (!file.is_open()) {
-            cout << "Unable to open the Library file.\n";
-            exit(-1);
+            cout << "Unable to open the Library file. File may not already exist.\n";
+            return;
         }
 
         string line;
@@ -125,7 +125,8 @@ public:
             cout << "Invalid ID: " << id << "\n";
             return;
         }
-        if (BookRecord.find(id) == BookRecord.end()) {
+        auto it = BookRecord.find(id);
+        if (it == BookRecord.end()) {
             cout << "Book does not exist.\n";
             return;
         }
@@ -133,57 +134,50 @@ public:
             string title, author;
             int availability;
             bool changed = false;
-
             cout << "Your chosen book is: " << getBook(id) << "\n\n";
-
-            cout << "Enter the updated title (Leave Blank for no change): ";
-            if (!(getline(cin >> ws, title))) {
+            cout << "Enter the updated title (Press Enter for no change): ";
+            if (!getline(cin, title)) {
                 throw InvalidInput();
             }
-            cout << "Enter the updated author (Leave Blank for no change): ";
-            if (!(getline(cin >> ws, author))) {
+            cout << "Enter the updated author (Press Enter for no change): ";
+            if (!getline(cin, author)) {
                 throw InvalidInput();
             }
-            cout << "Enter the updated availability (Enter -1 to keep no change): ";
+            cout << "Enter the updated availability (-1 for no change): ";
             if (!(cin >> availability)) {
                 throw InvalidInput();
             }
-            if (availability != -1) {
-                if (availability >= 0 && availability <= 999) {
-                    BookRecord[id].availability = availability;
-                    changed = true;
-                }
-                else {
-                    while (true) {
-                        cout << "Invalid. Enter the availability of Book: ";
-                        if (!(cin >> availability)) {
-                            throw InvalidInput();
-                        }
-                        if (availability >= 0 && availability <= 999) {
-                            BookRecord[id].availability = availability;
-                            changed = true;
-                            break;
-                        }
-                        cout << "Invalid. ";
-                    }
+            while (availability != -1 &&
+                (availability < 0 || availability > 999)) {
+                cout << "Invalid. Enter availability (0-999 or -1): ";
+                if (!(cin >> availability)) {
+                    throw InvalidInput();
                 }
             }
-            if (!title.empty() && BookRecord[id].title != title) {
-                BookRecord[id].title = title;
+            if (!title.empty() && it->second.title != title) {
+                it->second.title = title;
                 changed = true;
             }
-            if (!author.empty() && BookRecord[id].author != author) {
-                BookRecord[id].author = author;
+            if (!author.empty() && it->second.author != author) {
+                it->second.author = author;
+                changed = true;
+            }
+            if (availability != -1 && it->second.availability != availability) {
+
+                it->second.availability = availability;
                 changed = true;
             }
             if (changed) {
-                cout << "Values of book updated: " << getBook(id) << "\n";
-                return;
+                cout << "\nBook successfully updated: "
+                    << getBook(id) << "\n";
             }
-            cout << "No changes. Values of book remains the same: " << getBook(id) << "\n";
+            else {
+                cout << "\nNo changes. Book remains the same: "
+                    << getBook(id) << "\n";
+            }
         }
         catch (const InvalidInput& e) {
-            cout << e.what();
+            cout << e.what() << "\n";
             cin.clear();
             cin.ignore(100, '\n');
             return;
@@ -267,7 +261,7 @@ public:
     }
 
     void Exit() {
-        fstream file("Library.csv", ios::trunc);
+        fstream file("Library.csv", ios::trunc | ios::out);
         if (!file.is_open()) {
             cout << "Unable to open the file.\n";
             return;
